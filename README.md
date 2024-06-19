@@ -38,9 +38,9 @@
 
 Before you begin, ensure you have the following installed on your development environment:
 
-- Node.js 
-- npm or yarn
-- PostgreSQL
+- [Node.js](https://nodejs.org/en) 
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ## Getting Started
 
