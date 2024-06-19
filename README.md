@@ -49,7 +49,7 @@ Before you begin, ensure you have the following installed on your development en
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/order-management-system.git
+   git clone https://github.com/FatmaAhmed25/order-management-system.git
    cd order-management-system
 2. **Install dependencies:**
    ```bash
