@@ -84,7 +84,7 @@ The application should now be running locally at http://localhost:3000.
 
  ## API Documentation
 API documentation is automatically generated using Swagger. Access the Swagger UI at:
-http://localhost:3000/api/
+(http://localhost:3000/api/)
 
 
    
