@@ -65,7 +65,7 @@ Before you begin, ensure you have the following installed on your development en
    DATABASE_URL="postgresql://username:password@localhost:5432/database_name"
    Replace username and password with your PostgreSQL username and password, and database_name with the name you have chosen for your database.
 2. **Run database migrations:**
-   -To initialize or update your database schema, run the following command:
+   - To initialize or update your database schema, run the following command:
    ```bash
    npx prisma migrate dev
 
@@ -76,7 +76,7 @@ Before you begin, ensure you have the following installed on your development en
 To start the application in development mode, run:
 
 npm run start:dev
-# or
+or
 yarn start:dev
 
 The application should now be running locally at http://localhost:3000.
@@ -85,7 +85,7 @@ The application should now be running locally at http://localhost:3000.
 
 ## API Documentation
 API documentation is automatically generated using Swagger. Access the Swagger UI at:
-[Swagger UI](http://localhost:3000/api/)
+(http://localhost:3000/api/)
 
 
    
