@@ -38,7 +38,7 @@
 
 Before you begin, ensure you have the following installed on your development environment:
 
-- Node.js (recommended version)
+- Node.js 
 - npm or yarn
 - PostgreSQL
 
@@ -84,8 +84,7 @@ The application should now be running locally at http://localhost:3000.
 
  ## API Documentation
 API documentation is automatically generated using Swagger. Access the Swagger UI at:
-```bash
-http://localhost:3000/api/
+[Swagger UI](http://localhost:3000/api/)
 
 
    
