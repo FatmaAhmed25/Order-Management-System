@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  userId   Int     @id @default(autoincrement())
+  name     String
+  email    String  @unique
+  password String
+  address  String?
+  orders   Order[] // Orders placed by the user.
+  cart     Cart?   // User's active shopping cart, if any.
+}
+
+model Product {
+  productId    Int           @id @default(autoincrement())
+  name         String
+  description  String
+  price        Float
+  stock        Int
+  cartProducts CartProduct[] // Cart products associated with this product.
+  orderItems   OrderItem[]  // Order items associated with this product.
+}
+
+model Order {
+  orderId    Int         @id @default(autoincrement())
+  orderDate  DateTime    @default(now())
+  status     String
+  userId     Int
+  user       User        @relation(fields: [userId], references: [userId])
+  totalAmount Float      @default(0)
+  orderItems OrderItem[] // Items included in the order.
+  couponCode String?
+  
+}
+
+model OrderItem {
+  order     Order   @relation(fields: [orderId], references: [orderId])
+  orderId   Int // FK to Order
+  product   Product @relation(fields: [productId], references: [productId])
+  productId Int // FK to Product
+  quantity  Int
+
+  @@id([orderId, productId])  
+}
+
+model Cart {
+  cartId       Int           @id @default(autoincrement())
+  userId       Int?          @unique
+  user         User?         @relation(fields: [userId], references: [userId])
+  cartProducts CartProduct[]
+  totalAmount Float      @default(0)
+ 
+}
+
+model CartProduct {
+  cart      Cart    @relation(fields: [cartId], references: [cartId])
+  cartId    Int // FK to Cart
+  product   Product @relation(fields: [productId], references: [productId])
+  productId Int // FK to Product
+  quantity  Int
+
+  @@id([cartId, productId])
+}
+
+model Coupon {
+  couponId          Int      @id @default(autoincrement())
+  code              String   @unique
+  discountPercentage Float
+  expiryDate        DateTime
+}
