@@ -2,8 +2,7 @@ import { BadRequestException, Injectable, NotFoundException } from '@nestjs/comm
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CartDto } from './dto/cart.dto';
 import { RemoveCartDto } from './dto/remove-cart.dto';
-import { round } from 'lodash';
-import { ApplyCouponDto } from 'src/orders/dto/apply-coupon.dto';
+
 
 @Injectable()
 export class CartService {
@@ -111,24 +110,27 @@ export class CartService {
     }
     
 
-    /**
-     * View the user's cart with all its products.
-     */
-    async viewCart(userId: number) 
-    {
-        return this.prisma.cart.findUnique({
-            where: {
+/**
+ * View the user's cart with all its products.
+ */
+async viewCart(userId: number) {
+    return this.prisma.cart.findUnique({
+        where: {
             userId: userId,
-            },
-            include: {
+        },
+        select: {
+            cartId: true,
+            userId: true,
             cartProducts: {
-                include: {
-                product: true,
+                select: {
+                    product: true,
+                    quantity: true,
                 },
             },
-            },
-        });
-    }
+        },
+    });
+}
+
 
     /**
      * Update the quantity of a product in the user's cart.
@@ -214,13 +216,13 @@ export class CartService {
             throw new NotFoundException("User's cart not found.");
         }
 
-        await this.prisma.cart.update({
-            where: { cartId: userCart.cartId },
-            data: {
-                totalAmount: 0,
+        // await this.prisma.cart.update({
+        //     where: { cartId: userCart.cartId },
+        //     data: {
+        //         totalAmount: 0,
             
-            },
-        });
+        //     },
+        // });
 
         await this.prisma.cartProduct.update({
             where: {
