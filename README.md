@@ -67,7 +67,7 @@ Before you begin, ensure you have the following installed on your development en
 2. **Run database migrations:**
    - To initialize or update your database schema, run the following command:
    ```bash
-   npx prisma migrate dev
+   npx prisma migrate dev```
 
    This command applies any pending migrations to the database specified in your .env file. It ensures that your database schema matches your Prisma schema defined in your project.
 
