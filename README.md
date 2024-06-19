@@ -74,7 +74,7 @@ Before you begin, ensure you have the following installed on your development en
 
 ### Running the Application
 To start the application in development mode, run:
-```bash
+
 npm run start:dev
 # or
 yarn start:dev
@@ -82,7 +82,8 @@ yarn start:dev
 The application should now be running locally at http://localhost:3000.
 
 
- ## API Documentation
+
+## API Documentation
 API documentation is automatically generated using Swagger. Access the Swagger UI at:
 [Swagger UI](http://localhost:3000/api/)
 
